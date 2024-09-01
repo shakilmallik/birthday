@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Sanchita!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4e2d8;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6f61;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .animation {
+            position: relative;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .balloons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ff6f61;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        #one {
+            left: 20%;
+            background-color: #ff8a65;
+        }
+
+        #two {
+            left: 50%;
+            animation-delay: 2s;
+            background-color: #fdd835;
+        }
+
+        #three {
+            left: 80%;
+            animation-delay: 4s;
+            background-color: #4db6ac;
+        }
+
+        #four {
+            left: 65%;
+            animation-delay: 6s;
+            background-color: #ba68c8;
+        }
+
+        .footer {
+            font-size: 1em;
+            color: #777;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-300px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Happy Birthday, Sanchita!</h1>
+        <p class="message">Wishing you all the happiness in the world. 🎉🎂</p>
+        <div class="animation">
+            <div class="balloons">
+                <div class="balloon" id="one"></div>
+                <div class="balloon" id="two"></div>
+                <div class="balloon" id="three"></div>
+                <div class="balloon" id="four"></div>
+            </div>
+        </div>
+        <p class="footer">From Shakil with love 💖</p>
+    </div>
+    <audio id="birthday-audio" src="happy-birthday-sanchita.mp3"></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const balloons = document.querySelectorAll('.balloon');
+            const audio = document.getElementById('birthday-audio');
+
+            balloons.forEach(balloon => {
+                balloon.addEventListener('click', function () {
+                    audio.play();
+                    balloon.style.animation = "none";  // Stop the balloon's float animation
+                    balloon.style.transition = "transform 0.5s ease";
+                    balloon.style.transform = "scale(0)";  // Shrink the balloon
+                    setTimeout(() => {
+                        balloon.style.display = "none";  // Hide the balloon after the animation
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
